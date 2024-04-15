@@ -14,19 +14,22 @@ class UserState extends StatelessWidget {
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        } else if (snapshot.connectionState == ConnectionState.active) {
           if (snapshot.hasData) {
             return ChatView();
           } else {
             return LoginView();
           }
         } else if (snapshot.hasError) {
-          return Center(
-            child: Text(snapshot.hasError.toString()),
+          return const Center(
+            child: Text('There is an error, please try again later'),
           );
         } else {
-          return Center(
-            child: Text(snapshot.data.toString()),
-            //  CircularProgressIndicator(),
+          return const Center(
+            child: CircularProgressIndicator(),
           );
         }
       },
