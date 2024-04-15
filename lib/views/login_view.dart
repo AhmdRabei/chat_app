@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:chat_app/constants.dart';
 import 'package:chat_app/helper/show_snack_bar.dart';
 import 'package:chat_app/views/chat_view.dart';
@@ -152,7 +154,7 @@ class _RegisterViewState extends State<LoginView> {
   }
 
   Future<void> userSignin() async {
-    UserCredential userCredential = await FirebaseAuth.instance
+    await FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email!, password: password!);
   }
 }

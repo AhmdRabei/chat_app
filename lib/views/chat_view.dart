@@ -113,7 +113,9 @@ class ChatView extends StatelessWidget {
             ),
           );
         } else {
-          return Text('data');
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
         }
       },
     );
